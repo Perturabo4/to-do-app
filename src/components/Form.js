@@ -9,19 +9,22 @@ const Form = () => {
     const firebase = useContext(FirebaseContext)
 
     const submitHandler = event => {
+        
         event.preventDefault()
         
         if (value.trim()) {
             firebase.addNote(value.trim()).then(
-                alert.show('Note was created', 'success')
-            ).catch(
-                alert.show('Something was wrong', 'danger')
+                () => {
+                    alert.show('Note was created', 'success')
+                }).catch(
+                () => {
+                    alert.show('Something was wrong', 'danger')
+                }
             )
             setValue('')
         }else {
             alert.show('Enter text')
         }
-
         
     }
 

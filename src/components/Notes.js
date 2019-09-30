@@ -1,7 +1,6 @@
 import React from 'react'
 
-const Notes = ({notes}) => {
-    return (
+const Notes = ({notes, onRemove}) => (
         <ul className="list-group">
             {notes.map(note => (
                 <li 
@@ -10,11 +9,12 @@ const Notes = ({notes}) => {
                 >
                     <div>
                         <strong>{note.title}</strong>
-                        <small>{new Date().toLocaleDateString()}</small>
+                        <small>{note.date}</small>
                     </div>
                     <button 
                         type="button" 
                         className="btn btn-danger btn-sm"
+                        onClick = {() => onRemove(note.id)}
                         >
                             &times;
                     </button>
@@ -23,6 +23,5 @@ const Notes = ({notes}) => {
             ))}
         </ul>
     )
-}
 
 export default Notes
